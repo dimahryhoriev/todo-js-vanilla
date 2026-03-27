@@ -19,3 +19,42 @@ body {
         color: v.$text-primary-dark;
     }
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 45px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__title {
+        font-weight: 900;
+    }
+
+    .header__theme {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__theme-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        outline: none;
+    }
+
+}
