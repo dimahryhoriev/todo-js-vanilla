@@ -1,2 +1,21 @@
 @use 'reset';
-@use 'variables';
+@use 'variables' as v;
+@use 'fonts';
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: v.$bg-light;
+    font-size: 24px;
+    line-height: 1.2;
+    font-family: 'Lato', sans-serif;
+    color: v.$text-primary-light;
+    font-weight: 400;
+
+    &.dark-theme {
+        background-color: v.$bg-dark;
+        color: v.$text-primary-dark;
+    }
+}
