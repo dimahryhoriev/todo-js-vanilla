@@ -53,3 +53,54 @@ body {
     }
 
 }
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+    width: 100%;
+    gap: 60px;
+
+    &__title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 48px;
+    }
+
+    &__form {
+        display: flex;
+        height: auto;
+        width: 100%;
+        gap: 28px;
+    }
+
+    &__form-input {
+        outline: none;
+        border: none;
+        background-color: v.$surface-light;
+        height: 60px;
+        width: 100%;
+        padding: 16px 26px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+
+        &::placeholder {
+            color: v.$placeholder-light;
+            font-weight: 400;
+        }
+    }
+
+    &__form-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: v.$controls-light;
+        color: v.$white;
+        border-radius: 12px;
+        padding: 16px 32px;
+        gap: 6px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+}

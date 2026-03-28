@@ -186,4 +186,83 @@ body.dark-theme {
   outline: none;
   padding: 0;
   gap: 12px;
+}
+
+.todo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 700px;
+  width: 100%;
+  gap: 60px;
+}
+.todo__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+}
+.todo__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: auto;
+  width: 100%;
+  gap: 28px;
+}
+.todo__form-input {
+  outline: none;
+  border: none;
+  background-color: #FFFFFF;
+  height: 60px;
+  width: 100%;
+  padding: 16px 26px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.todo__form-input::-webkit-input-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+.todo__form-input::-moz-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+.todo__form-input:-ms-input-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+.todo__form-input::-ms-input-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+.todo__form-input::placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+.todo__form-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px 32px;
+  gap: 6px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }/*# sourceMappingURL=main.css.map */
