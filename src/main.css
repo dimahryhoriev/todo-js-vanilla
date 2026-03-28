@@ -169,10 +169,10 @@ body.dark-theme {
       -ms-flex-align: center;
           align-items: center;
 }
-.header .header__title {
+.header__title {
   font-weight: 900;
 }
-.header .header__theme {
+.header__theme {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -188,6 +188,17 @@ body.dark-theme {
   outline: none;
   padding: 0;
   gap: 12px;
+  color: #000000;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.header__theme path {
+  stroke: currentColor;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.header__theme:hover {
+  color: #6A7282;
 }
 
 .todo {

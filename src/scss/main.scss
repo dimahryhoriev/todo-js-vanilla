@@ -36,11 +36,11 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    .header__title {
+    &__title {
         font-weight: 900;
     }
 
-    .header__theme {
+    &__theme {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,6 +50,17 @@ body {
         outline: none;
         padding: 0;
         gap: 12px;
+        color: v.$black;
+        transition: all 0.3s ease;
+
+        path {
+            stroke: currentColor;
+            transition: all 0.3s ease;
+        }
+
+        &:hover {
+            color: v.$slate-300;
+        }
     }
 
 }
