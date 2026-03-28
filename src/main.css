@@ -29,9 +29,11 @@ dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
+ul,
+ol {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Set core body defaults */
@@ -260,9 +262,55 @@ body.dark-theme {
   border: none;
   background-color: #000000;
   color: #FFFFFF;
+  font-weight: 700;
   border-radius: 12px;
   padding: 16px 32px;
   gap: 6px;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.todo__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+  height: auto;
+  width: 100%;
+}
+.todo__filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 20px;
+  color: #6A7282;
+}
+.todo__filters-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.todo__filters-btn {
+  background: none;
+  border: none;
+  color: #6A7282;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.todo__filters-btn.is-active {
+  color: #333333;
+}
+.todo__filters-btn:hover:not(.is-active) {
+  color: #4A5565;
+}
+.todo__filters-btn:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }/*# sourceMappingURL=main.css.map */

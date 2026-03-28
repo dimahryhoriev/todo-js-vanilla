@@ -98,9 +98,49 @@ body {
         border: none;
         background-color: v.$controls-light;
         color: v.$white;
+        font-weight: 700;
         border-radius: 12px;
         padding: 16px 32px;
         gap: 6px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        height: auto;
+        width: 100%;
+    }
+
+    &__filters {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        color: v.$text-secondary-light;
+
+        &-list {
+            display: flex;
+        }
+
+        &-btn {
+            background: none;
+            border: none;
+            color: v.$text-secondary-light;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &.is-active {
+                color: v.$text-primary-light;
+            }
+
+            &:hover:not(.is-active) {
+                color: v.$slate-500;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
     }
 }
