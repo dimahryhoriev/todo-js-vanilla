@@ -44,6 +44,11 @@ body {
     font-weight: 400;
 }
 
+body,
+.wrapper {
+    transition: all 0.3s ease;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -119,29 +124,42 @@ body {
             align-items: center;
 
             svg {
+                transition: all 0.5s ease;
+
                 &:nth-child(1) {
-                    display: block;
+                    opacity: 1;
+                    transform: translateY(0);
+                    scale: 1;
                 }
 
                 &:nth-child(2) {
-                    display: none;
+                    position: absolute;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    scale: 0.4;
                 }
             }
 
             @include m.mobile-m {
-                width: 36px;
-                height: 36px;
+                svg {
+                    width: 36px;
+                    height: 36px;
+                }
             }
         }
 
         body.dark-theme & {
             &-icon {
                 svg:nth-child(1) {
-                    display: none;
+                    opacity: 0;
+                    transform: translateY(-20px);
+                    scale: 0.4;
                 }
 
                 svg:nth-child(2) {
-                    display: block;
+                    opacity: 1;
+                    transform: translateY(0);
+                    scale: 1;
                 }
             }
         }
