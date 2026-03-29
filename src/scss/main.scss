@@ -2,22 +2,45 @@
 @use 'variables' as v;
 @use 'fonts';
 
+:root {
+    --bg: #{v.$bg-light};
+    --surface: #{v.$surface-light};
+    --text-primary: #{v.$text-primary-light};
+    --text-secondary: #{v.$text-secondary-light};
+    --placeholder: #{v.$placeholder-light};
+    --controls: #{v.$controls-light};
+    --filter-active: #{v.$text-primary-light};
+
+    --add-button: #{v.$black};
+    --input: #{v.$white};
+    --check: #{v.$white};
+}
+
+body.dark-theme {
+    --bg: #{v.$bg-dark};
+    --surface: #{v.$surface-dark};
+    --text-primary: #{v.$text-primary-dark};
+    --text-secondary: #{v.$text-secondary-dark};
+    --placeholder: #{v.$placeholder-dark};
+    --controls: #{v.$controls-dark};
+    --filter-active: #{v.$text-primary-dark};
+
+    --add-button: #{v.$slate-500};
+    --input: #{v.$slate-700};
+    --check: #{v.$black};
+}
+
 body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: v.$bg-light;
+    background-color: var(--bg);
     font-size: 24px;
     line-height: 1.2;
     font-family: 'Lato', sans-serif;
-    color: v.$text-primary-light;
+    color: var(--text-primary);
     font-weight: 400;
-
-    &.dark-theme {
-        background-color: v.$bg-dark;
-        color: v.$text-primary-dark;
-    }
 }
 
 .wrapper {
@@ -50,12 +73,51 @@ body {
         outline: none;
         padding: 0;
         gap: 12px;
-        color: v.$black;
+        color: var(--controls);
         transition: all 0.3s ease;
 
         path {
             stroke: currentColor;
             transition: all 0.3s ease;
+        }
+
+        &-title {
+            &::before {
+                content: 'Dark';
+            }
+
+            body.dark-theme & {
+                &::before {
+                    content: 'Light';
+                }
+            }
+        }
+
+        &-icon {
+            display: flex;
+            align-items: center;
+
+            svg {
+                &:nth-child(1) {
+                    display: block;
+                }
+
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+
+        body.dark-theme & {
+            &-icon {
+                svg:nth-child(1) {
+                    display: none;
+                }
+
+                svg:nth-child(2) {
+                    display: block;
+                }
+            }
         }
 
         &:hover {
@@ -90,7 +152,8 @@ body {
     &__form-input {
         outline: none;
         border: none;
-        background-color: v.$surface-light;
+        background-color: var(--input);
+        color: var(--text-primary);
         height: 60px;
         width: 100%;
         padding: 16px 26px;
@@ -98,8 +161,12 @@ body {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 
         &::placeholder {
-            color: v.$placeholder-light;
+            color: var(--placeholder);
             font-weight: 400;
+        }
+
+        body.dark-theme & {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px v.$slate-500;
         }
     }
 
@@ -108,7 +175,7 @@ body {
         align-items: center;
         justify-content: center;
         border: none;
-        background-color: v.$controls-light;
+        background-color: var(--add-button);
         color: v.$white;
         font-weight: 700;
         border-radius: 12px;
@@ -121,6 +188,12 @@ body {
         &:hover {
             background-color: v.$midnight;
             scale: 1.02;
+        }
+
+        body.dark-theme & {
+            &:hover {
+                background-color: v.$slate-300;
+            }
         }
     }
 
@@ -136,7 +209,7 @@ body {
         display: flex;
         justify-content: space-between;
         font-size: 20px;
-        color: v.$text-secondary-light;
+        color: var(--text-secondary);
 
         &-list {
             display: flex;
@@ -145,12 +218,12 @@ body {
         &-btn {
             background: none;
             border: none;
-            color: v.$text-secondary-light;
+            color: var(--text-secondary);
             cursor: pointer;
             transition: all .3s ease;
 
             &.is-active {
-                color: v.$text-primary-light;
+                color: var(--filter-active);
             }
 
             &:hover:not(.is-active) {
@@ -167,6 +240,7 @@ body {
         display: flex;
         flex-direction: column;
         width: 100%;
+        gap: 30px;
 
         &-item {
             display: flex;
@@ -174,10 +248,17 @@ body {
             align-items: center;
             height: 84px;
             width: 100%;
-            background-color: v.$surface-light;
+            background-color: var(--surface);
             border-radius: 12px;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
             padding: 0px 36px 0px 28px;
+
+            &--done {
+                .todo__item-title {
+                    color: var(--text-secondary);
+                    text-decoration: line-through;
+                }
+            }
         }
     }
 
@@ -204,13 +285,22 @@ body {
             width: 0;
 
             &:checked+span {
-                background-color: v.$controls-light;
+                background-color: var(--controls);
                 box-shadow: none;
 
-                &::after {
-                    content: '';
+                svg {
                     opacity: 1;
                     transform: translate(-50%, -50%) scale(1);
+                }
+            }
+
+            &:not(:checked)+span:hover {
+                background-color: v.$gray-100;
+                box-shadow: inset 0 0 0 2px v.$slate-300;
+
+                body.dark-theme & {
+                    background-color: v.$slate-700;
+                    box-shadow: inset 0 0 0 2px v.$slate-300;
                 }
             }
         }
@@ -222,30 +312,21 @@ body {
             height: 100%;
             width: 100%;
             background-color: transparent;
-            box-shadow: inset 0 0 0 2px v.$controls-light;
+            box-shadow: inset 0 0 0 2px var(--controls);
             border-radius: 3px;
             transition: all 0.3s ease;
 
-            &::after {
-                content: '';
+            svg {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 width: 8px;
                 height: 6px;
-                background-image: url(/src/assets/icons/check.svg);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
+                color: var(--check);
 
                 opacity: 0;
                 transform: translate(-50%, -50%) scale(0.5);
                 transition: all 0.3s ease;
-            }
-
-            &:hover {
-                background-color: v.$gray-100;
-                box-shadow: inset 0 0 0 2px v.$slate-300;
             }
         }
     }
@@ -284,6 +365,7 @@ body {
         }
 
         path {
+            stroke: var(--controls);
             flex-shrink: 0;
             width: 100%;
             height: 100%;
@@ -295,6 +377,6 @@ body {
 .footer {
     &__copy {
         font-size: 20px;
-        color: v.$text-secondary-light;
+        color: var(--text-secondary);
     }
 }
