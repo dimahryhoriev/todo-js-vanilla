@@ -1,6 +1,7 @@
 @use 'reset';
 @use 'variables' as v;
 @use 'fonts';
+@use 'mixins' as m;
 
 :root {
     --bg: #{v.$bg-light};
@@ -51,6 +52,10 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px 45px;
+
+    @include m.mobile-m {
+        padding: 16px 16px;
+    }
 }
 
 .header {
@@ -61,6 +66,14 @@ body {
 
     &__title {
         font-weight: 900;
+
+        @include m.mobile-m {
+            font-size: 20px;
+        }
+
+        @include m.mobile-s {
+            font-size: 18px;
+        }
     }
 
     &__theme {
@@ -75,6 +88,14 @@ body {
         gap: 12px;
         color: var(--controls);
         transition: all 0.3s ease;
+
+        @include m.mobile-m {
+            font-size: 20px;
+        }
+
+        @include m.mobile-s {
+            font-size: 18px;
+        }
 
         path {
             stroke: currentColor;
@@ -106,6 +127,11 @@ body {
                     display: none;
                 }
             }
+
+            @include m.mobile-m {
+                width: 36px;
+                height: 36px;
+            }
         }
 
         body.dark-theme & {
@@ -136,10 +162,19 @@ body {
     gap: 60px;
     margin-bottom: 116px;
 
+    @include m.mobile-m {
+        margin-bottom: 30px;
+        gap: 40px;
+    }
+
     &__title {
         text-align: center;
         font-weight: 700;
         font-size: 48px;
+
+        @include m.mobile-m {
+            font-size: 36px;
+        }
     }
 
     &__form {
@@ -147,6 +182,10 @@ body {
         height: auto;
         width: 100%;
         gap: 28px;
+
+        @include m.mobile-m {
+            gap: 12px;
+        }
     }
 
     &__form-input {
@@ -159,6 +198,16 @@ body {
         padding: 16px 26px;
         border-radius: 12px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+
+        @include m.mobile-m {
+            font-size: 20px;
+            padding: 16px 20px;
+        }
+
+        @include m.mobile-s {
+            font-size: 18px;
+            height: 52px;
+        }
 
         &::placeholder {
             color: var(--placeholder);
@@ -185,6 +234,28 @@ body {
         cursor: pointer;
         transition: all 0.3s ease;
 
+        @include m.mobile-m {
+            padding: 0;
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+
+            span {
+                display: none;
+            }
+        }
+
+        @include m.mobile-s {
+            padding: 0;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+
+            span {
+                display: none;
+            }
+        }
+
         &:hover {
             background-color: v.$midnight;
             scale: 1.02;
@@ -210,9 +281,15 @@ body {
         justify-content: space-between;
         font-size: 20px;
         color: var(--text-secondary);
+        gap: 20px;
+
+        @include m.mobile-m {
+            font-size: 16px;
+        }
 
         &-list {
             display: flex;
+            flex-wrap: wrap;
         }
 
         &-btn {
@@ -253,6 +330,16 @@ body {
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
             padding: 0px 36px 0px 28px;
 
+            @include m.mobile-m {
+                height: 72px;
+                padding: 0px 20px 0px 20px;
+            }
+
+            @include m.mobile-s {
+                height: 64px;
+                padding: 0px 20px 0px 20px;
+            }
+
             &--done {
                 .todo__item-title {
                     color: var(--text-secondary);
@@ -265,6 +352,15 @@ body {
     &__item-content {
         display: flex;
         gap: 32px;
+
+        @include m.mobile-m {
+            font-size: 20px;
+            gap: 16px;
+        }
+
+        @include m.mobile-s {
+            font-size: 18px;
+        }
     }
 
     &__item-checkbox {
@@ -334,6 +430,15 @@ body {
     &__item-controls {
         display: flex;
         gap: 28px;
+
+        @include m.mobile-m {
+            gap: 18px;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &__item-btn {
@@ -378,5 +483,9 @@ body {
     &__copy {
         font-size: 20px;
         color: var(--text-secondary);
+
+        @include m.mobile-m {
+            font-size: 16px;
+        }
     }
 }
