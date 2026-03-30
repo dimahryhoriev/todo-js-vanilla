@@ -190,6 +190,10 @@ body,
   }
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -580,24 +584,25 @@ body.dark-theme .todo__content-empty img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 84px;
+  height: auto;
   width: 100%;
+  gap: 24px;
   background-color: var(--surface);
   border-radius: 12px;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-  padding: 0px 36px 0px 28px;
+  padding: 30px 36px 30px 28px;
 }
 @media (width <= 550px) {
   .todo__list-item {
-    height: 72px;
-    padding: 0px 20px 0px 20px;
+    height: auto;
+    padding: 24px 20px 24px 20px;
   }
 }
 @media (width <= 400px) {
   .todo__list-item {
-    height: 64px;
-    padding: 0px 20px 0px 20px;
+    height: auto;
+    padding: 20px 20px 20px 20px;
   }
 }
 .todo__list-item--done .todo__item-title {
@@ -633,10 +638,12 @@ body.dark-theme .todo__content-empty img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-item-align: center;
-      align-self: center;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   width: 20px;
   height: 20px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .todo__item-checkbox input {
   position: absolute;
@@ -671,12 +678,23 @@ body.dark-theme .todo__item-checkbox input:not(:checked) + span:hover {
   left: 0;
   height: 100%;
   width: 100%;
+  margin: 4.4px 0;
   background-color: transparent;
   -webkit-box-shadow: inset 0 0 0 2px var(--controls);
           box-shadow: inset 0 0 0 2px var(--controls);
   border-radius: 3px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+@media (width <= 550px) {
+  .todo__item-checkbox span {
+    margin: 2px 0;
+  }
+}
+@media (width <= 400px) {
+  .todo__item-checkbox span {
+    margin: 0.8px 0;
+  }
 }
 .todo__item-checkbox span svg {
   position: absolute;
@@ -695,11 +713,18 @@ body.dark-theme .todo__item-checkbox input:not(:checked) + span:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 4.4px 0;
   gap: 28px;
 }
 @media (width <= 550px) {
   .todo__item-controls {
     gap: 18px;
+    padding: 0;
   }
 }
 .todo__item-controls svg {
