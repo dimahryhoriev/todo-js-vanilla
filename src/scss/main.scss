@@ -275,7 +275,7 @@ body,
         }
 
         &:hover {
-            background-color: v.$midnight;
+            background-color: v.$slate-800;
             scale: 1.02;
         }
 
@@ -292,6 +292,58 @@ body,
         gap: 24px;
         height: auto;
         width: 100%;
+
+        &-empty {
+            display: flex;
+            justify-content: space-between;
+            width: auto;
+            align-self: center;
+            align-items: center;
+            gap: 48px;
+            margin: 0 -42px;
+
+            img {
+                max-width: 332px;
+                width: 100%;
+                height: auto;
+                flex: 0 1 auto;
+                min-width: 0;
+
+                body.dark-theme & {
+                    content: url(/src/assets/images/selfie-dark.png);
+                }
+            }
+
+            p {
+                max-width: 402px;
+                width: 100%;
+            }
+
+            @include m.tablet-m {
+                margin: 0;
+                padding: 0 20px;
+            }
+
+            @include m.tablet-s {
+                margin: 0;
+                padding: 0 20px;
+                height: 200px;
+
+                img {
+                    display: none;
+                }
+
+                p {
+                    text-align: center;
+                }
+            }
+
+            @include m.mobile-m {
+                p {
+                    font-size: 20px;
+                }
+            }
+        }
     }
 
     &__filters {

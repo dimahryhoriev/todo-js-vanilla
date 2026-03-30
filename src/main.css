@@ -444,7 +444,7 @@ body.dark-theme .todo__form-input {
   }
 }
 .todo__form-btn:hover {
-  background-color: #101828;
+  background-color: #1E2939;
   scale: 1.02;
 }
 body.dark-theme .todo__form-btn:hover {
@@ -461,6 +461,62 @@ body.dark-theme .todo__form-btn:hover {
   gap: 24px;
   height: auto;
   width: 100%;
+}
+.todo__content-empty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: auto;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 48px;
+  margin: 0 -42px;
+}
+.todo__content-empty img {
+  max-width: 332px;
+  width: 100%;
+  height: auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  min-width: 0;
+}
+body.dark-theme .todo__content-empty img {
+  content: url(/src/assets/images/selfie-dark.png);
+}
+.todo__content-empty p {
+  max-width: 402px;
+  width: 100%;
+}
+@media (width <= 1000px) {
+  .todo__content-empty {
+    margin: 0;
+    padding: 0 20px;
+  }
+}
+@media (width <= 700px) {
+  .todo__content-empty {
+    margin: 0;
+    padding: 0 20px;
+    height: 200px;
+  }
+  .todo__content-empty img {
+    display: none;
+  }
+  .todo__content-empty p {
+    text-align: center;
+  }
+}
+@media (width <= 550px) {
+  .todo__content-empty p {
+    font-size: 20px;
+  }
 }
 .todo__filters {
   display: -webkit-box;

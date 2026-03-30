@@ -1,10 +1,14 @@
 const themeButton = document.querySelector('.header__theme');
 
 
+// THEME SWITCHING
+
+// Save theme selection to localStorage
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-theme');
 }
 
+// Toggle theme on click
 themeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
 

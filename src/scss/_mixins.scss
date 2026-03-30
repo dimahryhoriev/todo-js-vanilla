@@ -1,3 +1,15 @@
+@mixin tablet-m {
+    @media (width <= 1000px) {
+        @content
+    }
+};
+
+@mixin tablet-s {
+    @media (width <= 700px) {
+        @content
+    }
+};
+
 @mixin mobile-m {
     @media (width <= 550px) {
         @content
