@@ -15,21 +15,23 @@
     --add-button: #{v.$black};
     --input: #{v.$white};
     --check: #{v.$white};
+
+    &.dark-theme {
+        --bg: #{v.$bg-dark};
+        --surface: #{v.$surface-dark};
+        --text-primary: #{v.$text-primary-dark};
+        --text-secondary: #{v.$text-secondary-dark};
+        --placeholder: #{v.$placeholder-dark};
+        --controls: #{v.$controls-dark};
+        --filter-active: #{v.$text-primary-dark};
+
+        --add-button: #{v.$slate-500};
+        --input: #{v.$slate-700};
+        --check: #{v.$black};
+    }
 }
 
-body.dark-theme {
-    --bg: #{v.$bg-dark};
-    --surface: #{v.$surface-dark};
-    --text-primary: #{v.$text-primary-dark};
-    --text-secondary: #{v.$text-secondary-dark};
-    --placeholder: #{v.$placeholder-dark};
-    --controls: #{v.$controls-dark};
-    --filter-active: #{v.$text-primary-dark};
 
-    --add-button: #{v.$slate-500};
-    --input: #{v.$slate-700};
-    --check: #{v.$black};
-}
 
 body {
     min-height: 100vh;
@@ -116,7 +118,7 @@ body,
                 content: 'Dark';
             }
 
-            body.dark-theme & {
+            .dark-theme & {
                 &::before {
                     content: 'Light';
                 }
@@ -152,7 +154,7 @@ body,
             }
         }
 
-        body.dark-theme & {
+        .dark-theme & {
             &-icon {
                 svg:nth-child(1) {
                     opacity: 0;
@@ -236,7 +238,7 @@ body,
             font-weight: 400;
         }
 
-        body.dark-theme & {
+        .dark-theme & {
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px v.$slate-500;
         }
     }
@@ -283,7 +285,7 @@ body,
             scale: 1.02;
         }
 
-        body.dark-theme & {
+        .dark-theme & {
             &:hover {
                 background-color: v.$slate-300;
             }
@@ -313,7 +315,7 @@ body,
                 flex: 0 1 auto;
                 min-width: 0;
 
-                body.dark-theme & {
+                .dark-theme & {
                     content: url(/src/assets/images/selfie-dark.png);
                 }
             }
@@ -470,7 +472,7 @@ body,
                 background-color: v.$gray-100;
                 box-shadow: inset 0 0 0 2px v.$slate-300;
 
-                body.dark-theme & {
+                .dark-theme & {
                     background-color: v.$slate-700;
                     box-shadow: inset 0 0 0 2px v.$slate-300;
                 }

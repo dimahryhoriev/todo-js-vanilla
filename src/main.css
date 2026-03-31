@@ -127,8 +127,7 @@ textarea:not([rows]) {
   --input: #FFFFFF;
   --check: #FFFFFF;
 }
-
-body.dark-theme {
+:root.dark-theme {
   --bg: #101828;
   --surface: #1E2939;
   --text-primary: #FFFFFF;
@@ -257,7 +256,7 @@ body,
 .header__theme-title::before {
   content: "Dark";
 }
-body.dark-theme .header__theme-title::before {
+.dark-theme .header__theme-title::before {
   content: "Light";
 }
 .header__theme-icon {
@@ -291,13 +290,13 @@ body.dark-theme .header__theme-title::before {
     height: 36px;
   }
 }
-body.dark-theme .header__theme-icon svg:nth-child(1) {
+.dark-theme .header__theme-icon svg:nth-child(1) {
   opacity: 0;
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
   scale: 0.4;
 }
-body.dark-theme .header__theme-icon svg:nth-child(2) {
+.dark-theme .header__theme-icon svg:nth-child(2) {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -396,7 +395,7 @@ body.dark-theme .header__theme-icon svg:nth-child(2) {
   color: var(--placeholder);
   font-weight: 400;
 }
-body.dark-theme .todo__form-input {
+.dark-theme .todo__form-input {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px #4A5565;
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 2px #4A5565;
 }
@@ -451,7 +450,7 @@ body.dark-theme .todo__form-input {
   background-color: #1E2939;
   scale: 1.02;
 }
-body.dark-theme .todo__form-btn:hover {
+.dark-theme .todo__form-btn:hover {
   background-color: #6A7282;
 }
 .todo__content {
@@ -491,7 +490,7 @@ body.dark-theme .todo__form-btn:hover {
           flex: 0 1 auto;
   min-width: 0;
 }
-body.dark-theme .todo__content-empty img {
+.dark-theme .todo__content-empty img {
   content: url(/src/assets/images/selfie-dark.png);
 }
 .todo__content-empty p {
@@ -667,7 +666,7 @@ body.dark-theme .todo__content-empty img {
   -webkit-box-shadow: inset 0 0 0 2px #6A7282;
           box-shadow: inset 0 0 0 2px #6A7282;
 }
-body.dark-theme .todo__item-checkbox input:not(:checked) + span:hover {
+.dark-theme .todo__item-checkbox input:not(:checked) + span:hover {
   background-color: #364153;
   -webkit-box-shadow: inset 0 0 0 2px #6A7282;
           box-shadow: inset 0 0 0 2px #6A7282;

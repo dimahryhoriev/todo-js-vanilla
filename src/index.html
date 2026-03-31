@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="main.css">
     <title>To-do List</title>
 </head>
@@ -124,7 +132,8 @@
                                             stroke-linejoin="round" />
                                     </svg>
                                 </button>
-                                <button class="todo__item-btn todo__item-btn--delete js-delete" type="button" aria-label="Delete">
+                                <button class="todo__item-btn todo__item-btn--delete js-delete" type="button"
+                                    aria-label="Delete">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -171,7 +180,8 @@
                                             stroke-linejoin="round" />
                                     </svg>
                                 </button>
-                                <button class="todo__item-btn todo__item-btn--delete js-delete" type="button" aria-label="Delete">
+                                <button class="todo__item-btn todo__item-btn--delete js-delete" type="button"
+                                    aria-label="Delete">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
