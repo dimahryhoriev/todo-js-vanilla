@@ -8,7 +8,7 @@ const empty = document.querySelector('.todo__content-empty');
 const filters = document.querySelector('.todo__filters');
 
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 
 // Initialize task creation and submission.
 function addTask() {
@@ -24,6 +24,7 @@ function addTask() {
 
             tasks.push(item);
             input.value = '';
+            saveToStorage();
         }
 
         renderTasks();
@@ -61,9 +62,16 @@ list.addEventListener('click', (e) => {
         const id = Number(e.target.closest('.todo__list-item').dataset.id);
         tasks = tasks.filter(task => task.id !== id);
 
+        saveToStorage();
         renderTasks();
     }
 });
+
+// Save to local storage.
+function saveToStorage() {
+    const tasksValue = JSON.stringify(tasks);
+    localStorage.setItem('myTasks', tasksValue);
+}
 
 addTask();
 renderTasks();
