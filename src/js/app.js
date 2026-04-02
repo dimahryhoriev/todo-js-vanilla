@@ -40,6 +40,11 @@ function renderTasks() {
         const taskTitle = node.querySelector('.js-title');
         node.querySelector('.todo__list-item').dataset.id = item.id;
         taskTitle.textContent = item.text;
+        if (item.completed === true) {
+            node.querySelector('.todo__list-item').classList.add('todo__list-item--done');
+            node.querySelector('.js-complete input').checked = true;
+        }
+
         list.append(node);
     });
 
@@ -56,6 +61,7 @@ function renderTasks() {
 
 // Handle interactions within task list.
 list.addEventListener('click', (e) => {
+    // Delete task
     const btnDelete = e.target.closest('.js-delete');
 
     if (btnDelete) {
@@ -64,6 +70,20 @@ list.addEventListener('click', (e) => {
 
         saveToStorage();
         renderTasks();
+    }
+
+    // Complete task
+    const btnComplete = e.target.tagName === 'INPUT';
+
+    if (btnComplete) {
+        const taskElement = e.target.closest('.todo__list-item');
+        const id = Number(taskElement.dataset.id);
+        const foundTask = tasks.find(task => task.id === id);
+        foundTask.completed = !foundTask.completed;
+        taskElement.classList.toggle('todo__list-item--done');
+        taskElement.querySelector('.js-complete input').checked = foundTask.completed;
+
+        saveToStorage();
     }
 });
 
