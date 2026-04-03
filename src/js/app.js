@@ -92,19 +92,27 @@ list.addEventListener('click', (e) => {
 
     // Edit task
     const btnEdit = e.target.closest('.js-edit');
+    const taskElement = e.target.closest('.todo__list-item');
+    const id = Number(taskElement.dataset.id);
+    const foundTask = tasks.find(task => task.id === id);
 
-    if (btnEdit) {
-        const taskElement = e.target.closest('.todo__list-item');
-        const id = Number(taskElement.dataset.id);
-        const foundTask = tasks.find(task => task.id === id);
+    if (!btnEdit.classList.contains('is-saving')) {
         const itemInput = document.createElement('input');
         const taskTitle = taskElement.querySelector('.js-title');
+        const editIcon = taskElement.querySelector('.js-edit');
         itemInput.type = 'text';
         itemInput.value = foundTask.text;
         taskTitle.replaceWith(itemInput);
+        editIcon.classList.toggle('is-saving');
 
         itemInput.classList.add('todo__item-title--editable');
         itemInput.focus();
+    } else {
+        const currentInput = taskElement.querySelector('.todo__item-title--editable');
+        foundTask.text = currentInput.value.trim();
+
+        saveToStorage();
+        renderTasks();
     }
 });
 

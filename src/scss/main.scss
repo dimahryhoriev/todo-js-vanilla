@@ -585,6 +585,19 @@ body,
             height: 100%;
             transition: all 0.3s ease;
         }
+
+        .js-icon-save {
+            display: none;
+        }
+
+        &.is-saving {
+            .js-icon-edit {
+                display: none;
+            }
+            .js-icon-save {
+                display: block;
+            }
+        }
     }
 }
 
