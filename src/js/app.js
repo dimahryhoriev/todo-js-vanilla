@@ -87,7 +87,7 @@ list.addEventListener('click', (e) => {
         taskElement.querySelector('.js-complete input').checked = foundTask.completed;
 
         saveToStorage();
-        renderTasks();
+        countTasks();
     }
 });
 
