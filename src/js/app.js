@@ -100,7 +100,11 @@ function saveToStorage() {
 // Tasks counter.
 function countTasks() {
     const activeTasks = tasks.filter(item => item.completed === false);
-    counter.innerHTML = activeTasks.length;
+    if (activeTasks.length > 0) {
+        counter.innerHTML = activeTasks.length;
+    } else {
+        counter.innerHTML = 'There are no';
+    }
 }
 
 addTask();
