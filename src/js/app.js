@@ -6,6 +6,7 @@ const list = document.querySelector('.todo__list');
 const template = document.querySelector('#task-template');
 const empty = document.querySelector('.todo__content-empty');
 const filters = document.querySelector('.todo__filters');
+const counter = document.querySelector('.js-count');
 
 
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
@@ -57,6 +58,8 @@ function renderTasks() {
         list.classList.add('is-hidden');
         filters.classList.add('is-hidden');
     }
+
+    countTasks();
 }
 
 // Handle interactions within task list.
@@ -84,6 +87,7 @@ list.addEventListener('click', (e) => {
         taskElement.querySelector('.js-complete input').checked = foundTask.completed;
 
         saveToStorage();
+        renderTasks();
     }
 });
 
@@ -91,6 +95,12 @@ list.addEventListener('click', (e) => {
 function saveToStorage() {
     const tasksValue = JSON.stringify(tasks);
     localStorage.setItem('myTasks', tasksValue);
+}
+
+// Tasks counter.
+function countTasks() {
+    const activeTasks = tasks.filter(item => item.completed === false);
+    counter.innerHTML = activeTasks.length;
 }
 
 addTask();
