@@ -625,6 +625,27 @@ body,
     font-size: 18px;
   }
 }
+.todo__item-title--editable {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: var(--placeholder);
+  padding: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 28.8px;
+}
+@media (width <= 550px) {
+  .todo__item-title--editable {
+    height: 24px;
+  }
+}
+@media (width <= 400px) {
+  .todo__item-title--editable {
+    height: 21.59px;
+  }
+}
 .todo__item-checkbox {
   position: relative;
   cursor: pointer;

@@ -440,6 +440,24 @@ body,
         }
     }
 
+    &__item-title--editable {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: var(--placeholder);
+        padding: 0;
+        align-items: center;
+        height: 28.8px;
+
+        @include m.mobile-m {
+            height: 24px;
+        }
+
+        @include m.mobile-s {
+            height: 21.59px;
+        }
+    }
+
     &__item-checkbox {
         position: relative;
         cursor: pointer;

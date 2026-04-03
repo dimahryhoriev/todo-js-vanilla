@@ -76,7 +76,7 @@ list.addEventListener('click', (e) => {
     }
 
     // Complete task
-    const btnComplete = e.target.tagName === 'INPUT';
+    const btnComplete = e.target.type === 'checkbox';
 
     if (btnComplete) {
         const taskElement = e.target.closest('.todo__list-item');
@@ -88,6 +88,23 @@ list.addEventListener('click', (e) => {
 
         saveToStorage();
         countTasks();
+    }
+
+    // Edit task
+    const btnEdit = e.target.closest('.js-edit');
+
+    if (btnEdit) {
+        const taskElement = e.target.closest('.todo__list-item');
+        const id = Number(taskElement.dataset.id);
+        const foundTask = tasks.find(task => task.id === id);
+        const itemInput = document.createElement('input');
+        const taskTitle = taskElement.querySelector('.js-title');
+        itemInput.type = 'text';
+        itemInput.value = foundTask.text;
+        taskTitle.replaceWith(itemInput);
+
+        itemInput.classList.add('todo__item-title--editable');
+        itemInput.focus();
     }
 });
 
