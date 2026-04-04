@@ -322,10 +322,12 @@ body,
   min-height: 624px;
   gap: 60px;
   margin-bottom: 116px;
+  margin-top: 45px;
 }
 @media (width <= 550px) {
   .todo {
     margin-bottom: 30px;
+    margin-top: 30px;
     gap: 40px;
     min-height: 503px;
   }
@@ -333,6 +335,7 @@ body,
 @media (width <= 400px) {
   .todo {
     margin-bottom: 30px;
+    margin-top: 30px;
     gap: 40px;
     min-height: 377px;
   }

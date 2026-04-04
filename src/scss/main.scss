@@ -186,15 +186,18 @@ body,
     min-height: 624px;
     gap: 60px;
     margin-bottom: 116px;
+    margin-top: 45px;
 
     @include m.mobile-m {
         margin-bottom: 30px;
+        margin-top: 30px;
         gap: 40px;
         min-height: 503px;
     }
 
     @include m.mobile-s {
         margin-bottom: 30px;
+        margin-top: 30px;
         gap: 40px;
         min-height: 377px;
     }
