@@ -314,11 +314,12 @@ body,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   max-width: 700px;
   width: 100%;
+  min-height: 624px;
   gap: 60px;
   margin-bottom: 116px;
 }
@@ -326,6 +327,14 @@ body,
   .todo {
     margin-bottom: 30px;
     gap: 40px;
+    min-height: 503px;
+  }
+}
+@media (width <= 400px) {
+  .todo {
+    margin-bottom: 30px;
+    gap: 40px;
+    min-height: 377px;
   }
 }
 .todo__title {

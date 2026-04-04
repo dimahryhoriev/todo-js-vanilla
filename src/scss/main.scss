@@ -180,15 +180,23 @@ body,
 .todo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     max-width: 700px;
     width: 100%;
+    min-height: 624px;
     gap: 60px;
     margin-bottom: 116px;
 
     @include m.mobile-m {
         margin-bottom: 30px;
         gap: 40px;
+        min-height: 503px;
+    }
+
+    @include m.mobile-s {
+        margin-bottom: 30px;
+        gap: 40px;
+        min-height: 377px;
     }
 
     &__title {
@@ -594,6 +602,7 @@ body,
             .js-icon-edit {
                 display: none;
             }
+
             .js-icon-save {
                 display: block;
             }
