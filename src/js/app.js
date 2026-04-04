@@ -107,12 +107,14 @@ list.addEventListener('click', (e) => {
 
         itemInput.classList.add('todo__item-title--editable');
         itemInput.focus();
-    } else {
-        const currentInput = taskElement.querySelector('.todo__item-title--editable');
-        foundTask.text = currentInput.value.trim();
 
-        saveToStorage();
-        renderTasks();
+        itemInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                saveTask(taskElement, foundTask);
+            }
+        });
+    } else {
+        saveTask(taskElement, foundTask);
     }
 });
 
@@ -130,6 +132,15 @@ function countTasks() {
     } else {
         counter.innerHTML = 'There are no';
     }
+}
+
+// Save task.
+function saveTask(taskElement, foundTask) {
+    const currentInput = taskElement.querySelector('.todo__item-title--editable');
+    foundTask.text = currentInput.value.trim();
+
+    saveToStorage();
+    renderTasks();
 }
 
 addTask();
