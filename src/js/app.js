@@ -7,6 +7,7 @@ const template = document.querySelector('#task-template');
 const empty = document.querySelector('.todo__content-empty');
 const filters = document.querySelector('.todo__filters');
 const counter = document.querySelector('.js-count');
+let currentFilter = 'all';
 
 
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
@@ -35,8 +36,16 @@ function addTask() {
 // Sync data array with UI.
 function renderTasks() {
     list.innerHTML = '';
+    let filteredTasks = [];
+    if (currentFilter === 'Active') {
+        filteredTasks = tasks.filter(task => task.completed === false);
+    } else if (currentFilter === 'Completed') {
+        filteredTasks = tasks.filter(task => task.completed === true);
+    } else {
+        filteredTasks = tasks;
+    }
 
-    tasks.forEach(item => {
+    filteredTasks.forEach(item => {
         const node = template.content.cloneNode(true);
         const taskTitle = node.querySelector('.js-title');
         node.querySelector('.todo__list-item').dataset.id = item.id;
@@ -143,6 +152,26 @@ function saveTask(taskElement, foundTask) {
     renderTasks();
 }
 
+// Filters for tasks.
+function initFilters() {
+    filters.addEventListener('click', (e) => {
+        const filterBtn = e.target.closest('.todo__filters-btn');
+        if (!filterBtn) {
+            return
+        }
+        const filterValue = filterBtn.dataset.filter;
+        const allButtons = filters.querySelectorAll('.todo__filters-btn');
+        allButtons.forEach((btn) => {
+            btn.classList.remove('is-active');
+        });
+        currentFilter = filterValue;
+        filterBtn.classList.toggle('is-active');
+
+        renderTasks();
+    });
+}
+
+initFilters();
 addTask();
 renderTasks();
 initTheme();
