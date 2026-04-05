@@ -439,11 +439,28 @@ body,
             @keyframes appear {
                 from {
                     opacity: 0;
-                    scale: 0.9;
+                    scale: 0.95;
                 }
+
                 to {
                     opacity: 1;
                     scale: 1;
+                }
+            }
+
+            &--leaving {
+                animation: leaving 0.5s ease-out forwards;
+
+                @keyframes leaving {
+                    from {
+                        opacity: 1;
+                        scale: 1;
+                    }
+
+                    to {
+                        opacity: 0;
+                        scale: 0.95;
+                    }
                 }
             }
         }

@@ -95,10 +95,14 @@ list.addEventListener('click', (e) => {
 
     if (btnDelete) {
         const id = Number(e.target.closest('.todo__list-item').dataset.id);
-        tasks = tasks.filter(task => task.id !== id);
+        const taskElement = e.target.closest('.todo__list-item');
+        taskElement.classList.add('todo__list-item--leaving');
 
-        saveToStorage();
-        renderTasks();
+        setTimeout(() => {
+            tasks = tasks.filter(task => task.id !== id);
+            renderTasks();
+            saveToStorage();
+        }, 300)
     }
 
     // Complete task
@@ -112,9 +116,15 @@ list.addEventListener('click', (e) => {
         taskElement.classList.toggle('todo__list-item--done');
         taskElement.querySelector('.js-complete input').checked = foundTask.completed;
 
-        setTimeout(renderTasks, 300);
-        saveToStorage();
-        countTasks();
+        if (currentFilter !== 'All') {
+            taskElement.classList.add('todo__list-item--leaving');
+        }
+
+        setTimeout(() => {
+            renderTasks();
+            saveToStorage();
+            countTasks();
+        }, 300)
     }
 
     // Edit task
