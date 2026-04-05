@@ -603,6 +603,8 @@ body,
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   padding: 30px 36px 30px 28px;
+  -webkit-animation: appear 0.5s ease-out forwards;
+          animation: appear 0.5s ease-out forwards;
 }
 @media (width <= 550px) {
   .todo__list-item {
@@ -619,6 +621,26 @@ body,
 .todo__list-item--done .todo__item-title {
   color: var(--text-secondary);
   text-decoration: line-through;
+}
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
 }
 .todo__item-content {
   display: -webkit-box;

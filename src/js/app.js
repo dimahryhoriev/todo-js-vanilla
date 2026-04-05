@@ -35,7 +35,6 @@ function addTask() {
 
 // Sync data array with UI.
 function renderTasks() {
-    list.innerHTML = '';
     let filteredTasks = [];
     if (currentFilter === 'Active') {
         filteredTasks = tasks.filter(task => task.completed === false);
@@ -45,17 +44,35 @@ function renderTasks() {
         filteredTasks = tasks;
     }
 
-    filteredTasks.forEach(item => {
-        const node = template.content.cloneNode(true);
-        const taskTitle = node.querySelector('.js-title');
-        node.querySelector('.todo__list-item').dataset.id = item.id;
-        taskTitle.textContent = item.text;
-        if (item.completed === true) {
-            node.querySelector('.todo__list-item').classList.add('todo__list-item--done');
-            node.querySelector('.js-complete input').checked = true;
-        }
+    const listItem = list.querySelectorAll('.todo__list-item');
+    listItem.forEach(listItem => {
+        const id = Number(listItem.dataset.id);
 
-        list.append(node);
+        if (!filteredTasks.find(task => task.id === id)) {
+            listItem.remove();
+        }
+    });
+
+    filteredTasks.forEach(item => {
+        const existingItem = list.querySelector(`[data-id="${item.id}"]`);
+        if (existingItem) {
+            existingItem.classList.toggle('todo__list-item--done', item.completed);
+            existingItem.querySelector('.js-complete input').checked = item.completed;
+            const taskTitle = existingItem.querySelector('.js-title');
+            if (taskTitle) {
+                taskTitle.textContent = item.text;
+            }
+        } else {
+            const node = template.content.cloneNode(true);
+            const taskTitle = node.querySelector('.js-title');
+            node.querySelector('.todo__list-item').dataset.id = item.id;
+            taskTitle.textContent = item.text;
+            if (item.completed === true) {
+                node.querySelector('.todo__list-item').classList.add('todo__list-item--done');
+                node.querySelector('.js-complete input').checked = true;
+            }
+            list.append(node);
+        }
     });
 
     if (tasks.length > 0) {
@@ -148,6 +165,11 @@ function countTasks() {
 function saveTask(taskElement, foundTask) {
     const currentInput = taskElement.querySelector('.todo__item-title--editable');
     foundTask.text = currentInput.value.trim();
+    taskElement.querySelector('.js-edit').classList.remove('is-saving');
+    const taskTitle = document.createElement('p');
+    taskTitle.classList.add('todo__item-title', 'js-title');
+    taskTitle.textContent = foundTask.text;
+    currentInput.replaceWith(taskTitle);
 
     saveToStorage();
     renderTasks();
