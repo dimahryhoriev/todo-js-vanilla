@@ -7,7 +7,7 @@ const template = document.querySelector('#task-template');
 const empty = document.querySelector('.todo__content-empty');
 const filters = document.querySelector('.todo__filters');
 const counter = document.querySelector('.js-count');
-let currentFilter = 'all';
+let currentFilter = 'All';
 
 
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
@@ -17,7 +17,7 @@ function addTask() {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        if (input.value) {
+        if (input.value.trim() !== '') {
             const item = {
                 id: Date.now(),
                 text: input.value.trim(),
@@ -95,6 +95,7 @@ list.addEventListener('click', (e) => {
         taskElement.classList.toggle('todo__list-item--done');
         taskElement.querySelector('.js-complete input').checked = foundTask.completed;
 
+        setTimeout(renderTasks, 300);
         saveToStorage();
         countTasks();
     }
