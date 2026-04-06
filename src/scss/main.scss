@@ -402,9 +402,36 @@ body,
 
     &__list {
         display: flex;
+        position: relative;
         flex-direction: column;
         width: 100%;
         gap: 30px;
+        max-height: 462px;
+        overflow: scroll;
+        scrollbar-width: none;
+
+        @include m.mobile-m {
+            max-height: 378px;
+        }
+
+        @include m.mobile-s {
+            max-height: 346px;
+        }
+
+        &-wrapper {
+            position: relative;
+        }
+
+        &-mask {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            background: linear-gradient(to bottom, var(--bg) 0px,
+                    transparent 80px, transparent calc(100% - 80px), var(--bg) 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
         &-item {
             display: flex;

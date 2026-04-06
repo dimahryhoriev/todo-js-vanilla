@@ -3,6 +3,7 @@ import { initTheme } from "./theme.js";
 const form = document.querySelector('.todo__form');
 const input = document.querySelector('.todo__form-input');
 const list = document.querySelector('.todo__list');
+const listWrapper = document.querySelector('.todo__list-wrapper');
 const template = document.querySelector('#task-template');
 const empty = document.querySelector('.todo__content-empty');
 const filters = document.querySelector('.todo__filters');
@@ -85,8 +86,40 @@ function renderTasks() {
         filters.classList.add('is-hidden');
     }
 
+    // Scroll mask lifecycle management.
+    function isScrollable(list) {
+        return list.scrollHeight > list.clientHeight;
+    }
+
+    const scrollable = isScrollable(list);
+    const existingMask = listWrapper.querySelector('.todo__list-mask');
+
+    if (tasks.length >= 4 && scrollable) {
+        if (!existingMask) {
+            const scrollMask = document.createElement('div');
+            scrollMask.classList.add('todo__list-mask');
+            listWrapper.appendChild(scrollMask);
+        }
+    } else {
+        existingMask?.remove();
+    }
+
     countTasks();
 }
+
+// Scroll mask visibility toggle.
+list.addEventListener('scroll', () => {
+    const existingMask = listWrapper.querySelector('.todo__list-mask');
+    if (existingMask) {
+        requestAnimationFrame(() => {
+            if (list.scrollTop > 0) {
+                existingMask.style.opacity = '1';
+            } else {
+                existingMask.style.opacity = '0';
+            }
+        });
+    }
+})
 
 // Handle interactions within task list.
 list.addEventListener('click', (e) => {
