@@ -683,6 +683,10 @@ body,
     padding: 20px 20px 20px 20px;
   }
 }
+.todo__list-item .todo__item-title {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
 .todo__list-item--done .todo__item-title {
   color: var(--text-secondary);
   text-decoration: line-through;
