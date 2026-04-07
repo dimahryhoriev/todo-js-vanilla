@@ -45,6 +45,24 @@ function renderTasks() {
         filteredTasks = tasks;
     }
 
+    const existingMessage = listWrapper.querySelector('.todo__list-message');
+    if (filteredTasks.length === 0 && tasks.length > 0) {
+        if (!existingMessage) {
+            const emptyText = document.createElement('div');
+            emptyText.classList.add('todo__list-message');
+
+            if (currentFilter === 'Active') {
+                emptyText.textContent = 'No active tasks found 🙁';
+            } else if (currentFilter === 'Completed') {
+                emptyText.textContent = 'No completed tasks found 🙁';
+            }
+
+            listWrapper.append(emptyText)
+        }
+    } else {
+        existingMessage?.remove();
+    }
+
     const listItem = list.querySelectorAll('.todo__list-item');
     listItem.forEach(listItem => {
         const id = Number(listItem.dataset.id);
@@ -156,6 +174,10 @@ list.addEventListener('click', (e) => {
 
     if (btnComplete) {
         const taskElement = e.target.closest('.todo__list-item');
+        if (taskElement.classList.contains('todo__list-item--leaving')) {
+            return;
+        }
+
         const id = Number(taskElement.dataset.id);
         const foundTask = tasks.find(task => task.id === id);
         foundTask.completed = !foundTask.completed;
@@ -175,6 +197,7 @@ list.addEventListener('click', (e) => {
 
     // Edit task
     const btnEdit = e.target.closest('.js-edit');
+    if (!btnEdit) return;
     const taskElement = e.target.closest('.todo__list-item');
     const id = Number(taskElement.dataset.id);
     const foundTask = tasks.find(task => task.id === id);
@@ -210,8 +233,12 @@ function saveToStorage() {
 // Tasks counter.
 function countTasks() {
     const activeTasks = tasks.filter(item => item.completed === false);
+    const mediaQuery = window.matchMedia('(max-width: 400px)').matches;
+
     if (activeTasks.length > 0) {
         counter.innerHTML = activeTasks.length;
+    } else if (activeTasks.length === 0 && mediaQuery) {
+        counter.innerHTML = '0';
     } else {
         counter.innerHTML = 'There are no';
     }
