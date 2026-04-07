@@ -735,6 +735,7 @@ body,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   gap: 32px;
 }
 @media (width <= 550px) {
@@ -758,6 +759,7 @@ body,
       -ms-flex-align: center;
           align-items: center;
   height: 28.8px;
+  width: 100%;
 }
 @media (width <= 550px) {
   .todo__item-title--editable {
