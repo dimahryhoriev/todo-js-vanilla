@@ -2,6 +2,7 @@
 @use 'variables' as v;
 @use 'fonts';
 @use 'mixins' as m;
+@use 'animations';
 
 :root {
     --bg: #{v.$bg-light};
@@ -404,18 +405,21 @@ body,
         display: flex;
         position: relative;
         flex-direction: column;
-        width: 100%;
+        width: auto;
         gap: 30px;
-        max-height: 462px;
+        max-height: 468px;
+        margin: 0 -20px;
+        padding: 0 20px 10px 20px;
         overflow: scroll;
         scrollbar-width: none;
 
         @include m.mobile-m {
-            max-height: 378px;
+            max-height: 380px;
+            gap: 24px;
         }
 
         @include m.mobile-s {
-            max-height: 346px;
+            max-height: 350px;
         }
 
         &-wrapper {
@@ -426,11 +430,25 @@ body,
             position: absolute;
             inset: 0;
             z-index: 10;
-            background: linear-gradient(to bottom, var(--bg) 0px,
-                    transparent 80px, transparent calc(100% - 80px), var(--bg) 100%);
             pointer-events: none;
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.3s;
+
+            &--top {
+                background: linear-gradient(to bottom, var(--bg) 0px, transparent 80px);
+                position: absolute;
+                inset: 0;
+                transition: opacity 0.3s;
+                opacity: 0;
+            }
+
+            &--bottom {
+                background: linear-gradient(to bottom, transparent calc(100% - 80px), var(--bg) 100%);
+                position: absolute;
+                inset: 0;
+                transition: opacity 0.3s;
+                opacity: 1;
+            }
         }
 
         &-item {
@@ -460,18 +478,6 @@ body,
                 .todo__item-title {
                     color: var(--text-secondary);
                     text-decoration: line-through;
-                }
-            }
-
-            @keyframes appear {
-                from {
-                    opacity: 0;
-                    scale: 0.95;
-                }
-
-                to {
-                    opacity: 1;
-                    scale: 1;
                 }
             }
 

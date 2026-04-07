@@ -96,9 +96,21 @@ function renderTasks() {
 
     if (tasks.length >= 4 && scrollable) {
         if (!existingMask) {
-            const scrollMask = document.createElement('div');
-            scrollMask.classList.add('todo__list-mask');
-            listWrapper.appendChild(scrollMask);
+            const maskWrapper = document.createElement('div');
+            maskWrapper.classList.add('todo__list-mask');
+
+            const topMask = document.createElement('div');
+            topMask.classList.add('todo__list-mask--top');
+            topMask.style.opacity = '0';
+
+            const bottomMask = document.createElement('div');
+            bottomMask.classList.add('todo__list-mask--bottom');
+            bottomMask.style.opacity = '1';
+
+            maskWrapper.appendChild(topMask);
+            maskWrapper.appendChild(bottomMask);
+
+            listWrapper.appendChild(maskWrapper);
         }
     } else {
         existingMask?.remove();
@@ -109,14 +121,15 @@ function renderTasks() {
 
 // Scroll mask visibility toggle.
 list.addEventListener('scroll', () => {
-    const existingMask = listWrapper.querySelector('.todo__list-mask');
-    if (existingMask) {
+    const topMask = listWrapper.querySelector('.todo__list-mask--top');
+    const bottomMask = listWrapper.querySelector('.todo__list-mask--bottom');
+
+    if (topMask && bottomMask) {
         requestAnimationFrame(() => {
-            if (list.scrollTop > 0) {
-                existingMask.style.opacity = '1';
-            } else {
-                existingMask.style.opacity = '0';
-            }
+            topMask.style.opacity = list.scrollTop > 0 ? '1' : '0';
+
+            const isAtBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1;
+            bottomMask.style.opacity = isAtBottom ? '0' : '1';
         });
     }
 })

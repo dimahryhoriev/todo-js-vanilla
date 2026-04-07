@@ -115,6 +115,26 @@ textarea:not([rows]) {
   font-style: normal;
   font-display: swap;
 }
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
 :root {
   --bg: #F3F4F6;
   --surface: #FFFFFF;
@@ -583,20 +603,23 @@ body,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
+  width: auto;
   gap: 30px;
-  max-height: 462px;
+  max-height: 468px;
+  margin: 0 -20px;
+  padding: 0 20px 10px 20px;
   overflow: scroll;
   scrollbar-width: none;
 }
 @media (width <= 550px) {
   .todo__list {
-    max-height: 378px;
+    max-height: 380px;
+    gap: 24px;
   }
 }
 @media (width <= 400px) {
   .todo__list {
-    max-height: 346px;
+    max-height: 350px;
   }
 }
 .todo__list-wrapper {
@@ -606,11 +629,26 @@ body,
   position: absolute;
   inset: 0;
   z-index: 10;
-  background: linear-gradient(to bottom, var(--bg) 0px, transparent 80px, transparent calc(100% - 80px), var(--bg) 100%);
   pointer-events: none;
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+}
+.todo__list-mask--top {
+  background: linear-gradient(to bottom, var(--bg) 0px, transparent 80px);
+  position: absolute;
+  inset: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.todo__list-mask--bottom {
+  background: linear-gradient(to bottom, transparent calc(100% - 80px), var(--bg) 100%);
+  position: absolute;
+  inset: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 1;
 }
 .todo__list-item {
   display: -webkit-box;
@@ -648,26 +686,6 @@ body,
 .todo__list-item--done .todo__item-title {
   color: var(--text-secondary);
   text-decoration: line-through;
-}
-@-webkit-keyframes appear {
-  from {
-    opacity: 0;
-    scale: 0.95;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
-}
-@keyframes appear {
-  from {
-    opacity: 0;
-    scale: 0.95;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
 }
 .todo__list-item--leaving {
   -webkit-animation: leaving 0.5s ease-out forwards;
