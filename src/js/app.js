@@ -208,6 +208,7 @@ list.addEventListener('click', (e) => {
         const editIcon = taskElement.querySelector('.js-edit');
         itemInput.type = 'text';
         itemInput.value = foundTask.text;
+        itemInput.name = 'edit-task';
         taskTitle.replaceWith(itemInput);
         editIcon.classList.toggle('is-saving');
 
