@@ -96,21 +96,21 @@ textarea:not([rows]) {
 
 @font-face {
   font-family: "Lato";
-  src: url("/src/assets/fonts/Lato-Regular.woff2") format("woff2");
+  src: url("src/assets/fonts/Lato-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Lato";
-  src: url("/src/assets/fonts/Lato-Bold.woff2") format("woff2");
+  src: url("src/assets/fonts/Lato-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Lato";
-  src: url("/src/assets/fonts/Lato-Black.woff2") format("woff2");
+  src: url("src/assets/fonts/Lato-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -523,7 +523,7 @@ body,
   min-width: 0;
 }
 .dark-theme .todo__content-empty img {
-  content: url(/src/assets/images/selfie-dark.png);
+  content: url(src/assets/images/selfie-dark.png);
 }
 .todo__content-empty p {
   max-width: 402px;
